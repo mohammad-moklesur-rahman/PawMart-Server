@@ -1,0 +1,1 @@
+Express, MongoDB, Cors, Dotenv, Nodemon

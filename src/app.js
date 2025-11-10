@@ -1,7 +1,9 @@
 import express from "express";
 import cors from "cors";
+import { connectDB } from "./config/PawMartDB.config.js";
 
 const app = express();
+connectDB()
 
 // * middleware
 app.use(cors());
