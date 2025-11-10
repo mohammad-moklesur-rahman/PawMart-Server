@@ -8,7 +8,7 @@ export const getAllProduct = async (req, res) => {
     const categoryMap = {
       "Pets (Adoption)": "Pets",
       "Pet Food": "Food",
-      "Accessories": "Accessories",
+      Accessories: "Accessories",
       "Pet Care Products": "Care Products",
     };
 
@@ -22,6 +22,22 @@ export const getAllProduct = async (req, res) => {
     res.send(result);
   } catch (error) {
     res.status(500).send({ message: "Server error" });
+  }
+};
+
+// *Get latest 6 listings products
+export const getLatestListing = async (req, res) => {
+  try {
+    // Sort by date descending and limit to 6
+    const listings = await productsCollection()
+      .find()
+      .sort({ date: -1 })
+      .limit(6)
+      .toArray();
+
+    res.send(listings);
+  } catch (error) {
+    res.status(500).send({ message: "Server Error" });
   }
 };
 
