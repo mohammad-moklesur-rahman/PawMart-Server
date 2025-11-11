@@ -1,4 +1,12 @@
+import { ObjectId } from "mongodb";
 import { productsCollection } from "../models/productsModel.js";
+
+// * Get Product By id
+export const getProductById = async (req, res) => {
+  const { id } = req.params;
+  const result = await productsCollection().findOne({ _id: new ObjectId(id) });
+  res.send(result);
+};
 
 // * Get All Products
 export const getAllProduct = async (req, res) => {

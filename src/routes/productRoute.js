@@ -1,5 +1,5 @@
 import express from "express";
-import { createProduct, getAllProduct, getLatestListing } from "../controllers/productController.js";
+import { createProduct, getAllProduct, getLatestListing, getProductById } from "../controllers/productController.js";
 
 const router = express.Router();
 
@@ -11,6 +11,11 @@ router.route('/')
   // * Route for latest listings product
   router.route('/latest')
     .get(getLatestListing)
+
+  // *Route for Get product by id
+  router.route('/:id')
+    .get(getProductById)
+
 
 
 
