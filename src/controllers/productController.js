@@ -49,6 +49,25 @@ export const getLatestListing = async (req, res) => {
   }
 };
 
+// * Get my Listings
+export const getUserProducts = async (req, res) => {
+  try {
+    const userEmail = req.query.email;
+
+    if (!userEmail) {
+      return res.status(400).send({ message: "User email required" });
+    }
+
+    const myProducts = await productsCollection()
+      .find({ email: userEmail })
+      .toArray();
+
+    res.send(myProducts);
+  } catch (error) {
+    res.status(500).send({ message: "Failed to fetch user products" });
+  }
+};
+
 // * Create Products
 export const createProduct = async (req, res) => {
   const doc = req.body;
