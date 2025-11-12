@@ -74,3 +74,29 @@ export const createProduct = async (req, res) => {
   const result = await productsCollection().insertOne(doc);
   res.send(result);
 };
+
+// * Update Product
+export const updateProduct = async (req, res) => {
+  const id = req.params.id;
+  const updatedProduct = req.body;
+
+  // Ensure valid ObjectId
+  const filter = { _id: new ObjectId(id) };
+
+  const updateDoc = {
+    $set: {
+      name: updatedProduct.name,
+      category: updatedProduct.category,
+      price: updatedProduct.price,
+      location: updatedProduct.location,
+      description: updatedProduct.description,
+      image: updatedProduct.image,
+      date: updatedProduct.date,
+      email: updatedProduct.email,
+    },
+  };
+
+  const result = await productsCollection().updateOne(filter, updateDoc);
+
+  res.send(result);
+};
