@@ -55,7 +55,7 @@ export const getUserProducts = async (req, res) => {
     const userEmail = req.query.email;
 
     if (!userEmail) {
-      return res.status(400).send({ message: "User email required" });
+      return res.status(400).send({ message: "email required" });
     }
 
     const myProducts = await productsCollection()
@@ -64,7 +64,7 @@ export const getUserProducts = async (req, res) => {
 
     res.send(myProducts);
   } catch (error) {
-    res.status(500).send({ message: "Failed to fetch user products" });
+    res.status(500).send({ message: "Failed to fetch" });
   }
 };
 
