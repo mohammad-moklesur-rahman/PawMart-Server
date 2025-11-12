@@ -1,1 +1,1 @@
-Express, MongoDB, Cors, Dotenv, Nodemon, MVC
+# Using packages: Express, MongoDB, Cors, Dotenv, Nodemon, MVC folder structure
