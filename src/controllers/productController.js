@@ -100,3 +100,12 @@ export const updateProduct = async (req, res) => {
 
   res.send(result);
 };
+
+// * Delete product
+export const deleteProduct = async (req, res) => {
+  const id = req.params.id;
+  const result = await productsCollection().deleteOne({
+    _id: new ObjectId(id),
+  });
+  res.send(result);
+};
